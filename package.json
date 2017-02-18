@@ -1,0 +1,31 @@
+{
+  "name": "generic-subshell",
+  "version": "0.0.1001",
+  "description": "Allows you to run all commands as subshells and collect all exit codes",
+  "main": "index.js",
+  "scripts": {
+    "test": "Suman"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ORESoftware/generic-subshell.git"
+  },
+  "keywords": [
+    "Suman",
+    "test",
+    "bash",
+    "subshell",
+    "generic",
+    "parallel",
+    "shell"
+  ],
+  "author": "Olegzandr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ORESoftware/generic-subshell/issues"
+  },
+  "homepage": "https://github.com/ORESoftware/generic-subshell#readme",
+  "devDependencies": {
+    "suman": "github:sumanjs/suman#dev"
+  }
+}
