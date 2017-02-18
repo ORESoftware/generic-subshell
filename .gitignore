@@ -1,1 +1,6 @@
-*suman/logs/test-target/
+*suman/logs/
+
+test-target/
+
+.idea
+
