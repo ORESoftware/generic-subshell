@@ -4,10 +4,10 @@ import * as cp from 'child_process';
 import * as path from 'path';
 
 //project
-const run = path.resolve(__dirname +'/run.sh');
+const run = path.resolve(__dirname +'/lib/run.sh');
 
 
-export default function($commands: Array<string>, args: Array<string>){
+export default function($commands: Array<string>, args?: Array<string>){
 
     const commands = $commands.map(function(c){
           return String(c).trim();
@@ -18,6 +18,5 @@ export default function($commands: Array<string>, args: Array<string>){
             GENERIC_SUBSHELL_COMMANDS: commands.join('\n')
         })
     });
-
 
 };

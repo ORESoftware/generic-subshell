@@ -1,7 +1,7 @@
 "use strict";
 var cp = require("child_process");
 var path = require("path");
-var run = path.resolve(__dirname + '/run.sh');
+var run = path.resolve(__dirname + '/lib/run.sh');
 function default_1($commands, args) {
     var commands = $commands.map(function (c) {
         return String(c).trim();

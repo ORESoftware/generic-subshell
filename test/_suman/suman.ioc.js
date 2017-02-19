@@ -17,7 +17,7 @@ module.exports = data => {  //load async deps for any of your suman tests
     return {
 
         runPath: function(){
-           return path.resolve(global.projectRoot + '/run.sh');
+           return path.resolve(global.projectRoot + '/lib/run.sh');
         }
 
 
