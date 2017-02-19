@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/ORESoftware/generic-subshell#readme",
   "devDependencies": {
+    "@types/node": "^7.0.5",
     "suman": "github:sumanjs/suman#dev"
   }
 }

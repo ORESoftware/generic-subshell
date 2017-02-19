@@ -21,7 +21,11 @@ function handleJobs() {
 trap 'handleJobs' CHLD
 DIRN=$(dirname "$0");
 
-commands=(${GENERIC_SUBSHELL_COMMANDS})
+commands=()
+
+while read -r line; do
+   commands+=("$line")
+done <<< "${GENERIC_SUBSHELL_COMMANDS}"
 
 clen=`expr "${#commands[@]}" - 1` # get length of commands - 1
 
