@@ -1,7 +1,5 @@
 *suman/logs/
-
 test-target/
-
 .idea
-
 *.log
+node_modules
