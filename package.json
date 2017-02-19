@@ -1,10 +1,10 @@
 {
   "name": "generic-subshell",
-  "version": "0.0.1001",
+  "version": "0.0.1002",
   "description": "Allows you to run all commands as subshells and collect all exit codes",
   "main": "index.js",
   "scripts": {
-    "test": "Suman"
+    "test": "echo 'better to run the ./test.sh script directly' && ./test.sh"
   },
   "repository": {
     "type": "git",
