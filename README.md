@@ -14,7 +14,7 @@ a reference to the child process.
 
 ```js
 
-import gs from 'generic-subshell';  // using es5 it's: const gs = require('generic-subshell').default
+import * as gs from 'generic-subshell';  // using es5 it's: const gs = require('generic-subshell');
 
 const commands = [
   'echo "foo"', 

@@ -2,11 +2,9 @@
 
 import * as suman from 'suman';
 const Test = suman.init(module);
-import gs from 'generic-subshell';
+import * as gs from 'generic-subshell';
 
 Test.create(function (assert, $core, it) {
-
-  const cp = $core.child_process;
 
   const gsc = [
       '{ echo "4"; exit 0; }',

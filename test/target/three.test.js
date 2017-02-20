@@ -2,9 +2,8 @@
 "use strict";
 var suman = require("suman");
 var Test = suman.init(module);
-var gs = require('generic-subshell').default;
+var gs = require('generic-subshell');
 Test.create(function (assert, $core, it) {
-    var cp = $core.child_process;
     var gsc = [
         '{ echo "4"; exit 0; }',
         '{ echo "5"; exit 0; }',

@@ -4,4 +4,5 @@
 # you may also wish to run link.sh before running test.sh
 
 cd $(dirname "$0") &&
-./node_modules/.bin/suman -r
+./transpile.sh &&
+./node_modules/.bin/suman test/target

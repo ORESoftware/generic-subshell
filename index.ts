@@ -2,11 +2,16 @@
 //core
 import * as cp from 'child_process';
 import * as path from 'path';
+import {ChildProcess} from "child_process";
+
 
 //project
 const run = path.resolve(__dirname +'/lib/run.sh');
 
-export default function($commands: Array<string>, args?: Array<string>): {
+
+////////////////////////////////////////////////////////////
+
+export = function($commands: Array<string>, args?: Array<string>) : ChildProcess {
 
     const commands = $commands.map(function(c){
           return String(c).trim();
@@ -19,3 +24,4 @@ export default function($commands: Array<string>, args?: Array<string>): {
     });
 
 };
+
