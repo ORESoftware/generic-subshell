@@ -11,7 +11,7 @@
     "url": "git+https://github.com/ORESoftware/generic-subshell.git"
   },
   "keywords": [
-    "Suman",
+    "suman",
     "test",
     "bash",
     "subshell",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/ORESoftware/generic-subshell#readme",
   "devDependencies": {
     "@types/node": "^7.0.5",
+    "node-check-fast": "0.0.1002",
     "suman": "github:sumanjs/suman#dev"
   }
 }
