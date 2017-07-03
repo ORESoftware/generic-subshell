@@ -12,8 +12,8 @@ function handleJobs() {
          CODE=0;
          wait ${job} || CODE=$?
          if [[ "${CODE}" != "0" ]]; then
-         echo "At least one test failed with exit code => ${CODE}" ;
-         EXIT_CODE=1;
+            echo "At least one test failed with exit code => ${CODE}" ;
+            EXIT_CODE=1;
          fi
      done
 }
