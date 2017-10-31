@@ -1,0 +1,19 @@
+
+### folders
+node_modules
+.idea
+test
+scripts
+
+### files
+.gitignore
+.npmignore
+suman.conf.js
+
+### matching
+*.md
+*.sh
+*.json
+*.log
+
+
