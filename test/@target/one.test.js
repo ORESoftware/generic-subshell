@@ -4,8 +4,6 @@ var suman = require('suman');
 var Test = suman.init(module).Test;
 Test.create(function (assert, $core, runPath, it) {
     var cp = $core.child_process;
-    assert(cp);
-    console.log(runPath);
     var gsc = [
         '{ echo "4"; exit 0; }',
         '{ echo "5"; exit 0; }',

@@ -8,9 +8,6 @@ Test.create(function (assert, $core, runPath, it) {
 
   const cp = $core.child_process;
 
-  assert(cp);
-  console.log(runPath);
-
   const gsc = [
       '{ echo "4"; exit 0; }',
       '{ echo "5"; exit 0; }',

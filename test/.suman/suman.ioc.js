@@ -7,21 +7,20 @@
 // which is actually pretty cool
 // ******************************************************************************************************************
 
-
 const http = require('http');
 const path = require('path');
 
+module.exports = $root => {  //load async deps for any of your suman tests
 
-module.exports = data => {  //load async deps for any of your suman tests
+  return {
 
-    return {
+    dependencies: {
 
-        runPath: function(){
-           return path.resolve(global.projectRoot + '/lib/run.sh');
-        }
-
-
+      runPath: function () {
+        return path.resolve($root + '/lib/run.sh');
+      }
     }
 
+  }
 
 };

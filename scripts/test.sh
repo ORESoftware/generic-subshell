@@ -10,6 +10,11 @@ if [[ ! -f "package.json" ]]; then
     exit 1;
 fi
 
+if [[ ! -d "node_modules/generic-subshell" ]]; then
+    npm link
+    npm link generic-subshell
+fi
+
 tsc --project tsconfig-test.json  || echo "tests may have compiled with errors"  # builds the tests
-suman "test/@target/**/*.js"
+suman -r "test/@target"
 
