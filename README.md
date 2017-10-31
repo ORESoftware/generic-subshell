@@ -22,19 +22,18 @@ const commands = [
   'echo "bar"'
   ];
 
-const k = gs(commands);  // exports a child process
+const k = gs.run(commands);  // returns a child process
 
-k.once('close', function(code){
-    // hopefully everything exits with code 0
+k.once('exit', function(code){
+    // if code is 0, all subshells exited with code 0
+    // if code is 1, at least one subshell exited with an non-zero code
 });
 
 ```
 
-* To use and install with npm:
+# Installation:
 
 ```bash
-cd '<project-root>'
-npm init # if your project is not already an NPM project
-npm install --save generic-subshell
+npm install generic-subshell --save
 
 ```

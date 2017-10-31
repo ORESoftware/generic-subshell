@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/ORESoftware/generic-subshell#readme",
   "devDependencies": {
+    "@types/core-js": "^0.9.43",
     "@types/node": "^7.0.5",
-    "node-check-fast": "0.0.1002",
-    "suman": "github:sumanjs/suman#dev"
+    "node-check-fast": "0.0.1002"
   }
 }

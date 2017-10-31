@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+'use strict';
 
 const suman = require('suman');
-const Test = suman.init(module);
+const {Test} = suman.init(module);
 
 Test.create(function (assert, $core, runPath, it) {
 
@@ -30,7 +31,7 @@ Test.create(function (assert, $core, runPath, it) {
     k.stdout.pipe(process.stdout);
     k.stderr.pipe(process.stderr);
 
-    k.once('close', function (code) {
+    k.once('exit', function (code) {
       console.log('exit code => ', code);
       t.done(code);
     })

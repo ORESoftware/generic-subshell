@@ -6,18 +6,18 @@ import {ChildProcess} from "child_process";
 
 
 //project
-const run = path.resolve(__dirname +'/lib/run.sh');
+const exec = path.resolve(__dirname +'/lib/run.sh');
 
 
 ////////////////////////////////////////////////////////////
 
-export = function($commands: Array<string>, args?: Array<string>) : ChildProcess {
+export const run = function($commands: Array<string>, args?: Array<string>) : ChildProcess {
 
     const commands = $commands.map(function(c){
           return String(c).trim();
     });
 
-    return cp.spawn(run, (args || []), {
+    return cp.spawn(exec, (args || []), {
         env: Object.assign({}, process.env, {
             GENERIC_SUBSHELL_COMMANDS: commands.join('\n')
         })

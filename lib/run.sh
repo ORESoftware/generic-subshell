@@ -34,8 +34,7 @@ for i in `seq 0 "$clen"`; do
     echo "$i ith command has been issued as a background job"
 done
 
-# wait for all to finish
-wait;
 
-echo "EXIT_CODE => $EXIT_CODE"
+wait; # wait for all subshells to finish
+echo "=> generic-subshell process exit code => $EXIT_CODE"
 exit "$EXIT_CODE"

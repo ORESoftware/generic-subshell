@@ -1,18 +1,12 @@
 {
   "compilerOptions": {
-    "types": [
-      "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "target": "es5",
     "module": "commonjs",
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
     "allowJs": false,
-    "outDir": "test/target",
+    "outDir": "test/@target",
     "allowUnreachableCode": true,
     "lib": [
       "es2015",
