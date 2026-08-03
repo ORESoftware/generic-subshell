@@ -1,40 +1,57 @@
 #!/usr/bin/env bash
 
-git config --global url."https://".insteadOf git://
+set -u
+set -m
 
-set -m # allow for job control
-EXIT_CODE=0;  # exit code of overall script
+EXIT_CODE=0
+commands=()
+pids=()
 
-function handleJobs() {
-     for job in `jobs -p`; do
-         echo "PID => ${job}"
-#        if  ! wait ${job} ; then
-         CODE=0;
-         wait ${job} || CODE=$?
-         if [[ "${CODE}" != "0" ]]; then
-            echo "At least one test failed with exit code => ${CODE}" ;
-            EXIT_CODE=1;
-         fi
-     done
+while IFS= read -r line; do
+  if [[ -n "${line//[[:space:]]/}" ]]; then
+    commands+=("$line")
+  fi
+done <<< "${GENERIC_SUBSHELL_COMMANDS:-}"
+
+if [[ "${#commands[@]}" -lt 1 ]]; then
+  echo "generic-subshell: no commands were supplied" >&2
+  exit 64
+fi
+
+function terminateChildren() {
+  local signal_exit_code="$1"
+  trap - INT TERM
+
+  for pid in "${pids[@]}"; do
+    if kill -0 "$pid" 2>/dev/null; then
+      kill -TERM -- "-$pid" 2>/dev/null || kill -TERM "$pid" 2>/dev/null || true
+    fi
+  done
+
+  for pid in "${pids[@]}"; do
+    wait "$pid" 2>/dev/null || true
+  done
+
+  exit "$signal_exit_code"
 }
 
-trap 'handleJobs' CHLD
-DIRN=$(dirname "$0");
+trap 'terminateChildren 130' INT
+trap 'terminateChildren 143' TERM
 
-commands=()
-
-while read -r line; do
-   commands+=("$line")
-done <<< "${GENERIC_SUBSHELL_COMMANDS}"
-
-clen=`expr "${#commands[@]}" - 1` # get length of commands - 1
-
-for i in `seq 0 "$clen"`; do
-    (echo "${commands[$i]}" | bash) &   # run the command via bash in subshell
-    echo "$i ith command has been issued as a background job"
+for i in "${!commands[@]}"; do
+  bash -c "${commands[$i]}" &
+  pids[$i]=$!
+  printf 'GENERIC_SUBSHELL_STARTED index=%s pid=%s\n' "$i" "${pids[$i]}"
 done
 
+for i in "${!pids[@]}"; do
+  code=0
+  wait "${pids[$i]}" || code=$?
+  printf 'GENERIC_SUBSHELL_RESULT index=%s exit_code=%s\n' "$i" "$code"
+  if [[ "$code" -ne 0 ]]; then
+    EXIT_CODE=1
+  fi
+done
 
-wait; # wait for all subshells to finish
-echo "=> generic-subshell process exit code => $EXIT_CODE"
+printf 'GENERIC_SUBSHELL_EXIT_CODE=%s\n' "$EXIT_CODE"
 exit "$EXIT_CODE"
